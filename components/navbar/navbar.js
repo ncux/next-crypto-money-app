@@ -7,7 +7,7 @@ import classes from "./navbar.module.css";
 export default function Navbar() {
 
     return (
-        <div className={classes.container}>
+        <div className={classes.container} >
             <div className={classes.logoContainer}>
                 <Image src="/images/cryptocurrency.png" width="50" height="50" />
                 <Typography.Title level={2} className={classes.logo}>
@@ -16,9 +16,18 @@ export default function Navbar() {
                 {/*<Button className={classes.menuControlContainer}>*/}
 
                 {/*</Button>*/}
-                <Menu theme="dark">
+                <Menu theme="dark" >
                     <Menu.Item icon={ <HomeOutlined /> }>
                         <Link href={`/`}>Home</Link>
+                    </Menu.Item>
+                    <Menu.Item icon={ <FundOutlined /> }>
+                        <Link href={`/cryptos`}>Cryptos</Link>
+                    </Menu.Item>
+                    <Menu.Item icon={ <MoneyCollectOutlined /> }>
+                        <Link href={`/exchanges`}>Exchanges</Link>
+                    </Menu.Item>
+                    <Menu.Item icon={ <BulbOutlined /> }>
+                        <Link href={`/news`}>News</Link>
                     </Menu.Item>
                 </Menu>
 
