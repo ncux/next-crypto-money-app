@@ -175,31 +175,32 @@ a:hover {
     }
 }
 
-@media screen and (max-width: 500px){
-    .coin-links{
+@media screen and (max-width: 500px) {
+    .coin-links {
         padding: 0px;
     }
-    .coin-detail-container{
+    .coin-detail-container {
         margin: 0;
     }
 }
-@media screen and (max-width: 500px){
+@media screen and (max-width: 500px) {
     .heading{
         margin-top: 20px;
     }
 }
 
-.select-news{
+.select-news {
     width: 180px;
 }
-.news-card{
+.news-card {
     min-height: 300px !important;
 }
-.news-image-container{
+.news-image-container {
     display: flex !important;
     justify-content: space-between !important;
+    color: #001529;
 }
-.news-title{
+.news-title {
     width: 70%;
 }
 
