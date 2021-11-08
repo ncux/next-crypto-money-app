@@ -24,10 +24,10 @@ export default function Navbar() {
                         <Link href={`/cryptos`}>Cryptos</Link>
                     </Menu.Item>
                     <Menu.Item icon={ <MoneyCollectOutlined /> }>
-                        <Link href={`/exchanges`}>Exchanges</Link>
+                        <Link href={`/cryptos/exchanges`}>Exchanges</Link>
                     </Menu.Item>
                     <Menu.Item icon={ <BulbOutlined /> }>
-                        <Link href={`/news`}>News</Link>
+                        <Link href={`/cryptos/news`}>News</Link>
                     </Menu.Item>
                 </Menu>
 

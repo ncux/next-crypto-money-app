@@ -1,12 +1,18 @@
 import Head from 'next/head'
-import { useEffect, useState } from "react";
-import { Avatar, Card, Select, Typography, Row, Col } from "antd";
+import { useContext, useEffect } from "react";
+import { Avatar, Card, Typography, Row, Col } from "antd";
 import moment from "moment";
-import { BING_API_URL, BING_API_HEADERS } from "../config";
+import { CryptoContext } from "../../context/crypto";
 
-export default function NewsPage({ news }) {
+export default function NewsPage() {
 
-    if(!news?.length) return (<h1>Loading...</h1>);
+    const { getNews, newsData: news, } = useContext(CryptoContext);
+
+    useEffect(() => {
+        getNews();
+    }, []);
+
+    if(!news?.length > 0) return (<h1>Loading...</h1>);
 
     return (
         <>
@@ -15,6 +21,7 @@ export default function NewsPage({ news }) {
                 <meta name="description" content="Information about crypto currencies - powered by Rapid API" />
                 <meta name="keywords" content={ `crypto currency currencies coins api` } />
             </Head>
+            <h1 style={{ fontWeight: 'bold', fontSize: '2rem' }}>Latest Crypto Money News</h1>
             <Row gutter={[24, 24]}>
                 {
                     news.map((item, i) => (
@@ -26,6 +33,13 @@ export default function NewsPage({ news }) {
                                         <img src={item?.image?.thumbnail?.contentUrl} alt={`image`} />
                                     </div>
                                     <p>{ item?.description?.length > 100 ? item.description.substring(0, 100) : item?.description }</p>
+                                    <div className="provider-container">
+                                        <div>
+                                            <Avatar src={ item.provider[0]?.image?.thumbnail?.contentUrl } alt="Image" />
+                                            <Typography.Text className="provider-name">{ item.provider[0]?.name }</Typography.Text>
+                                        </div>
+                                        <Typography.Text>{ moment(item.datePuplished).startOf('ss').fromNow() }</Typography.Text>
+                                    </div>
                                 </a>
                             </Card>
                         </Col>
@@ -35,30 +49,3 @@ export default function NewsPage({ news }) {
         </>
     )
 };
-
-// export async function getServerSideProps(context) {
-//
-//     const newsCategory = 'cryptocurrency';
-//
-//     const newsUrl = `/search?q=${newsCategory}&safeSearch=Off&textFormat=Raw&freshness=Day&count=20`;
-//
-//     const options = {
-//         method: 'GET', headers: BING_API_HEADERS
-//     };
-//
-//     try {
-//         const response = await fetch(`${BING_API_URL}/${newsUrl}`, options);
-//         const data = await response.json();
-//         if(response.ok) {
-//             return {
-//                 props: { news: data?.value }
-//             }
-//         } else {
-//             return null;
-//         }
-//     } catch (e) {
-//         console.log(e);
-//     }
-//
-// }
-
