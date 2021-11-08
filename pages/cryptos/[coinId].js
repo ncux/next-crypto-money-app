@@ -42,6 +42,33 @@ export default function CoinDetailsPage({ data }) {
                     <Typography.Title level={2} className="coin-name">{ coin?.name } | { coin?.symbol } Price</Typography.Title>
                     <p>{ coin?.name } live price in US dollars. See value statistics, market cap and supply.</p>
                 </Col>
+                <Select onChange={value => setTimePeriod(value)} defaultValue="7d" className="select-timeperiod" placeholder="Select Time Period">
+                    {
+                        time.map((period, i) =>(
+                            <Select.Option key={i} value={period}>{ period }</Select.Option>
+                        ))
+                    }
+                </Select>
+                <Col className="stats-container">
+                    <Col className="coin-value-statistics">
+                        <Col className="coin-value-statistics-heading">
+                            <Typography.Title level={3} className="coin-details-heading">{ coin?.name } Value Statistics</Typography.Title>
+                            <p>An overview showing the statistics { coin?.name }</p>
+                        </Col>
+
+                        {
+                            stats.map(({ icon, title, value }) => (
+                                <Col className="coin-stats">
+                                    <Col className="coin-stats-name">
+                                        <Typography.Text>{ icon }</Typography.Text>
+                                        <Typography.Text>{ title }</Typography.Text>
+                                    </Col>
+                                </Col>
+                            ))
+                        }
+
+                    </Col>
+                </Col>
 
             </Col>
         </>

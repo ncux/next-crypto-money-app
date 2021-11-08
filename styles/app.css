@@ -163,6 +163,12 @@ a:hover {
     background-color: var(--bgSecondary);
 }
 
+.coin-details-heading {
+    font-weight: 700 !important;
+    margin-top: 20px !important;
+    color: var(--pink) !important;
+}
+
 @media screen and (max-width:1000px){
     .stats-container{
         flex-direction: column;
